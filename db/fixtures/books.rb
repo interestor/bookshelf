@@ -6,6 +6,7 @@ def create_book(id: nil, title: nil, author: nil)
     s.id = id
     s.title = title
     s.author = author
+    s.is_in_shelf = false
   end
 end
 
