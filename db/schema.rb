@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180322120044) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
+    t.boolean "is_in_shelf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
