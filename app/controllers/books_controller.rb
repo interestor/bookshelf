@@ -15,6 +15,14 @@ class BooksController <  ApplicationController
     end
   end
 
+  def show
+    # 登録後の遷移先は/books/4で
+    # rails routesには/books/:id のGETがbooks#showに対応しているとあった
+    # この場合、params[:id]に4が入る
+    id = params[:id]
+    @book = Book.find_by(id: id)
+  end
+
   private
   # Rails4からStrongParamaterと呼ばれる機能が追加されました。
   # セキュリティのため、permitメソッドで許可したパラメータ名しか取得できません。
