@@ -6,7 +6,8 @@ class BooksController <  ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      # @userはuser_path(@user) に自動変換される
+      # @book.id => 4
+      # @bookはbook_path(@book)に自動変換される
       redirect_to @book, notice: "本を登録しました。"
     else
       # ValidationエラーなどでDBに保存できない場合 new.html.erb を再表示
