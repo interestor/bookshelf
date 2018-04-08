@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/book_shelf", to: "book_shelf#show"
   #get "/books/new", to: "books#new"
   resources :books
+  get "/books/:id/move_to_book_shelf", to: "books#move_to_book_shelf"
 end
