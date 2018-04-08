@@ -5,6 +5,10 @@ class BooksController <  ApplicationController
 
   def create
     @book = Book.new(book_params)
+    # モデルのバリデーションを行って、
+    # データベースへの保存を試みる
+    # いずれかが失敗すればfalseを返す、成功すればtrueを返す
+    # 例外を返してくれる、@book.save!という関数もある（調べてみてください）
     if @book.save
       # @book.id => 4
       # @bookはbook_path(@book)に自動変換される
@@ -18,6 +22,10 @@ class BooksController <  ApplicationController
   def update
     id = params[:id]
     @book = Book.find_by(id: id)
+    # 以下のコードと同じ意味
+    #  @book.title = book_params[:title]
+    #  @book.author = book_params[:author]
+    #  @book.save
     if @book.update(book_params)
       # TODO: 完了後の動作
     else
