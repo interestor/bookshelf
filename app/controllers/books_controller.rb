@@ -27,7 +27,8 @@ class BooksController <  ApplicationController
     #  @book.author = book_params[:author]
     #  @book.save
     if @book.update(book_params)
-      # TODO: 完了後の動作
+      redirect_to @book, notice: "本を編集しました。"
+      # render :new
     else
       render :new
     end
@@ -44,6 +45,24 @@ class BooksController <  ApplicationController
     # この場合、params[:id]に4が入る
     id = params[:id]
     @book = Book.find_by(id: id)
+  end
+
+  def move_to_book_shelf
+    id = params[:id]
+    @book = Book.find_by(id: id)
+    # あとはviewを作るだけ
+    # updateを参考につくってみましょう
+  end
+
+  def destroy
+    id = parmas[:id]
+    book = Book.find_by(id: id)
+    # hogeで削除できるhogeを探す！
+    if book.hoge
+      # 削除完了処理
+    else
+      # 削除失敗処理
+    end
   end
 
   private
