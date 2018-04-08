@@ -15,6 +15,21 @@ class BooksController <  ApplicationController
     end
   end
 
+  def update
+    id = params[:id]
+    @book = Book.find_by(id: id)
+    if @book.update(book_params)
+      # TODO: 完了後の動作
+    else
+      render :new
+    end
+  end
+
+  def edit
+    id = params[:id]
+    @book = Book.find_by(id: id)
+  end
+
   def show
     # 登録後の遷移先は/books/4で
     # rails routesには/books/:id のGETがbooks#showに対応しているとあった
