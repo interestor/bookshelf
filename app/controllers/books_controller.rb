@@ -39,6 +39,18 @@ class BooksController <  ApplicationController
     @book = Book.find_by(id: id)
   end
 
+  def destroy
+    id = parmas[:id]
+    @book = Book.find_by(id: id)
+    # hogeで削除できるhogeを探す！
+    if @book.destroy(book_params)
+      redirect_to @book, notice: "本を削除しました。"
+    else
+      # 削除失敗処理
+      render :new
+    end
+  end
+
   def show
     # 登録後の遷移先は/books/4で
     # rails routesには/books/:id のGETがbooks#showに対応しているとあった
@@ -50,20 +62,11 @@ class BooksController <  ApplicationController
   def move_to_book_shelf
     id = params[:id]
     @book = Book.find_by(id: id)
-    # あとはviewを作るだけ
-    # updateを参考につくってみましょう
+    #:is_in_shelf=1とする処理？
+
   end
 
-  def destroy
-    id = parmas[:id]
-    book = Book.find_by(id: id)
-    # hogeで削除できるhogeを探す！
-    if book.hoge
-      # 削除完了処理
-    else
-      # 削除失敗処理
-    end
-  end
+
 
   private
   # Rails4からStrongParamaterと呼ばれる機能が追加されました。
