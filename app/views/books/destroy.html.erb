@@ -1,0 +1,15 @@
+<%= form_for @book, url: {action: "destroy"} do |f| %>#ここの書き方あとで
+  <div class="field">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author, "著者" %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "削除する" %>
+  </div>
+<% end %>
